@@ -5,28 +5,19 @@ import { useNavigation } from '@react-navigation/native';
 
 const ShowTile = ({ showDetails }) => {
     const [state, setState] = React.useState({ isFocused: false });
-    const onFocusChange = () => { setState({ isFocused: !state.isFocused }) };
+    //const onFocusChange = () => { setState({ isFocused: !state.isFocused }) };
     const navigation = useNavigation();
 
     return (
         <TouchableNativeFeedback
             //activeOpacity={0.6}
-            //underlayColor="#e31414"
             //hasTVPreferredFocus={true}
             //accessible={true}
             //nativeID={showDetails.id}
+            //nextFocusRight={parseInt(showDetails.id) + 1}
             style={styles.tileStyle}
             myProp={state}
-            /*onShowUnderlay={() => {
-                setState({ isFocused: !state.isFocused });
-                console.log("here");
-            }}
-            onHideUnderlay={() => {
-                setState({ isFocused: !state.isFocused });
-                console.log("here");
-            }}*/
-
-            //nextFocusRight={parseInt(showDetails.id) + 1}
+            
             onFocus={() => {
                 setState({ isFocused: !state.isFocused });
                 console.log("focussed");
@@ -42,10 +33,6 @@ const ShowTile = ({ showDetails }) => {
             onPressOut={() => {
                 setState({ isFocused: !state.isFocused });
             }}
-            /*onPress={() => {
-                setState({ isFocused: !state.isFocused });
-                console.log("pressed!");
-            }}*/
         >
             <View collapsable={false}>
                 <View style={state.isFocused ? styles.imageWrapperOnFocus : styles.imageWrapper}>

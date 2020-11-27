@@ -5,6 +5,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-na
 import ToastExample from '../native_modules/ToastExample';
 
 const MenuBar = ({menuItems}) => {
+    //for tab animation
     const [layoutComputed, setLayoutComputed] = useState(false);
     const [menuItemsDetails,setMenuItemsDetails] = useState(menuItems.map((menuTitle,index)=>{
         let details = {
@@ -29,15 +30,12 @@ const MenuBar = ({menuItems}) => {
     });
 
     function onTabPress(menuIndex) {
-        //console.log("onTabPress(" + menuIndex + ")");
-        //console.log("inside onTabPress; width : " + menuItemsDetails[menuIndex].width + " left : " + distanceFromLeft(menuIndex));
         ToastExample.show("Tab Pressed", ToastExample.SHORT);
         left.value = withSpring(distanceFromLeft(menuIndex));
         width.value = withSpring(menuItemsDetails[menuIndex].width);
     }
 
     function distanceFromLeft(index){
-        //console.log("inside distance function");
         let dist=0;
         for(let i=0;i<index;i++){
             dist += menuItemsDetails[i].width + 30;
@@ -88,6 +86,7 @@ const MenuBar = ({menuItems}) => {
                 }}
             />
             <View style={styles.tabHighlighterContainer}>
+                {/* this is the view which moves during animation */}
                 <Animated.View style={[styles.tabHighlighter,animatedStyles]} >
 
                 </Animated.View>

@@ -5,7 +5,6 @@ import ShowTile from './ShowTile';
 import { RecyclerListView, DataProvider, LayoutProvider } from "recyclerlistview";
 
 const Row = ({ title, shows }) => {
-    // const [data,setData] = useState([]);
     const dataProvider = useRef(new DataProvider((r1,r2)=>{
         return r1.id !== r2.id;
     }));
@@ -43,6 +42,7 @@ const Row = ({ title, shows }) => {
     return (
         <View style={styles.ParentContainer}>
             <Text style={styles.rowTitle}>{title}</Text>
+            {/* horizontal row of program/shows */}
             <RecyclerListView
                 layoutProvider={layoutProvider}
                 dataProvider={dataProviderStateVariable}
