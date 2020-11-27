@@ -31,7 +31,6 @@ public class VideoViewManager extends SimpleViewManager<VideoView> {
     @ReactProp(name="url")
     public void setVideoPath(VideoView videoView, String urlPath) {
         
-        //Uri uri = Uri.parse("https://vod-progressive.akamaized.net/exp=1605287373~acl=%2A%2F1274780453.mp4%2A~hmac=aa98243d8cb0dae86f41133bc1a323c54ba56baf76db538fc9a50b32b91de7cb/vimeo-prod-skyfire-std-us/01/161/13/325806440/1274780453.mp4?filename=Pexels+Videos+2048452.mp4");
         Uri uri = Uri.parse(urlPath);
         videoView.setVideoURI(uri);
         videoView.start();
