@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet} from 'react-native';
-import VideoView from '../native_modules/VideoView';
-import ExoPlayerView from '../native_modules/ExoPlayerView';
+import VideoView from '../native_modules/VideoView';//uses android's VideoView
+import ExoPlayerView from '../native_modules/ExoPlayerView';//uses android's Exoplayer library
 
 const PlaybackScreen = () => {
     return (

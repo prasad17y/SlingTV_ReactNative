@@ -52,8 +52,8 @@ public class ExoPlayerViewManager extends ViewGroupManager<LinearLayout> {
     public void setVideoPath(LinearLayout linearLayout, String urlPath) {
         player = new SimpleExoPlayer.Builder(reactContext).build();
         playerView.setPlayer(player);
-        Uri uri = RawResourceDataSource.buildRawResourceUri(R.raw.suits);
-        MediaItem mediaItem = MediaItem.fromUri(uri);
+        //Uri uri = RawResourceDataSource.buildRawResourceUri(R.raw.suits);
+        MediaItem mediaItem = MediaItem.fromUri(urlPath);
         player.setMediaItem(mediaItem);
         player.setPlayWhenReady(playWhenReady);
         player.seekTo(currentWindow, playbackPosition);
