@@ -16,8 +16,8 @@ const HomeScreen = () => {
 	
 	const dataProvider = React.useRef(new DataProvider((r1,r2)=>{
         return r1.id !== r2.id;
-    }));
-    //const [dataProviderStateVariable,setDataProviderStateVariable] = React.useState(dataProvider.current.cloneWithRows(results.rows));
+	}));
+	
 	if(results != null){
 		dataProviderVariable = dataProvider.current.cloneWithRows(results.rows);
 	}
@@ -30,7 +30,7 @@ const HomeScreen = () => {
             switch(type){
                 case 0 :
                     dim.width = 900;
-                    dim.height = 250;
+                    dim.height = 300;
                     break;
                 default :
                     dim.width=0;
