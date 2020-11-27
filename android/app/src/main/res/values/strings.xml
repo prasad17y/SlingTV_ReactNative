@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SlingTV_ReactNative</string>
+    <string name="videourl">https://developers.google.com/training/images/tacoma_narrows.mp4</string>
+</resources>
