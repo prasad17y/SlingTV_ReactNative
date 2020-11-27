@@ -9,6 +9,7 @@ const HomeScreen = () => {
 	
 	const [results, setResults] = React.useState(null);
 	React.useEffect(() => {
+		//assuming yelp.get('/search') => a request being sent to server, and receiving this json object
 		setResults(
 			{
 				"menuItems" : [
@@ -227,6 +228,7 @@ const HomeScreen = () => {
 	// );
 	
 	return (
+		//waiting for response for yelp.get request
 		(results !== null)?(
 			<ScrollView style={styles.scrollViewStyle} showsVerticalScrollIndicator={false} >
 				<MenuBar menuItems={results.menuItems} ></MenuBar>
@@ -242,7 +244,6 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
 	scrollViewStyle : {
 		backgroundColor:"#1b1b29",
-		//backgroundColor:"#c4bb3d"
 	}
 });
 export default HomeScreen;
