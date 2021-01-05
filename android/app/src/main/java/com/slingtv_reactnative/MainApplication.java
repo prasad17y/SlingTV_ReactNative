@@ -32,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new CustomToastPackage());
           packages.add(new VideoViewPackage());
           packages.add(new ExoPlayerViewPackage());
+          packages.add(new NewExoPlayerViewPackage());
           return packages;
         }
 

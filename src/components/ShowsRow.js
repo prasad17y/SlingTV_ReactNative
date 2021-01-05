@@ -1,16 +1,18 @@
-import React, { useRef, useState } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import { FlatList, TouchableNativeFeedback, TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useRef } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import ShowTile from './ShowTile';
 import { RecyclerListView, DataProvider, LayoutProvider } from "recyclerlistview";
 
-const Row = ({ title, shows }) => {
+const ShowsRow = ({ title, shows }) => {
     const dataProvider = useRef(new DataProvider((r1,r2)=>{
         return r1.id !== r2.id;
     }));
-    const [dataProviderStateVariable,setDataProviderStateVariable] = useState(dataProvider.current.cloneWithRows(shows));
-    //to update data inside dataProvider => dataProvider.current.cloneWithRows(newData);
-    let {width} = Dimensions.get("window");
+    let dataProviderVariable = useRef(dataProvider.current.cloneWithRows(shows));
+    let showsPrevValue = useRef(shows);
+    if (JSON.stringify(shows)!==JSON.stringify(showsPrevValue)) {
+        dataProviderVariable.current = dataProvider.current.cloneWithRows(shows);
+    }
+    
     const layoutProvider = new LayoutProvider(
         index => {
             return 0;
@@ -32,7 +34,7 @@ const Row = ({ title, shows }) => {
         switch (type) {
             case 0:
                 return (
-                        <ShowTile showDetails={data}></ShowTile>
+                    <ShowTile showDetails={data}></ShowTile>
                 );
             default:
                 return null;
@@ -42,26 +44,13 @@ const Row = ({ title, shows }) => {
     return (
         <View style={styles.ParentContainer}>
             <Text style={styles.rowTitle}>{title}</Text>
-            {/* horizontal row of program/shows */}
             <RecyclerListView
                 layoutProvider={layoutProvider}
-                dataProvider={dataProviderStateVariable}
+                dataProvider={dataProviderVariable.current}
                 rowRenderer={rowRenderer}
                 isHorizontal={true}
                 scrollViewProps={{showsHorizontalScrollIndicator:false}}
             />
-            {/* <FlatList
-                data={shows}
-                keyExtractor={(item) => item.id}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                renderItem={({ item }) => {
-                    return (
-                            <ShowTile showDetails={item}></ShowTile>
-                    );
-                }}
-            /> */}
-
         </View>
     );
 };
@@ -70,11 +59,10 @@ const styles = StyleSheet.create({
     ParentContainer: {
         flex:1,
         marginHorizontal: 30,
-        marginVertical: 30,
+        marginVertical: 0,
         height:250,
         width:900,
-        /* borderWidth:1,
-        borderColor:"white", */
+        
     },
     rowTitle: {
         fontSize: 20,
@@ -82,4 +70,4 @@ const styles = StyleSheet.create({
         color: "white"
     }
 });
-export default Row;
+export default ShowsRow;

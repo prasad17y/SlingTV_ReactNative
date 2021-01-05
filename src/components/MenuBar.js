@@ -30,7 +30,7 @@ const MenuBar = ({menuItems}) => {
     });
 
     function onTabPress(menuIndex) {
-        ToastExample.show("Tab Pressed", ToastExample.SHORT);
+        //ToastExample.show("Tab Pressed", ToastExample.SHORT);
         left.value = withSpring(distanceFromLeft(menuIndex));
         width.value = withSpring(menuItemsDetails[menuIndex].width);
     }

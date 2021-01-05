@@ -1,30 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
-import { TouchableHighlight, TouchableNativeFeedback, TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
 const ShowTile = ({ showDetails }) => {
     const [state, setState] = React.useState({ isFocused: false });
-    //const onFocusChange = () => { setState({ isFocused: !state.isFocused }) };
     const navigation = useNavigation();
 
     return (
         <TouchableNativeFeedback
-            //activeOpacity={0.6}
-            //hasTVPreferredFocus={true}
-            //accessible={true}
-            //nativeID={showDetails.id}
-            //nextFocusRight={parseInt(showDetails.id) + 1}
             style={styles.tileStyle}
-            myProp={state}
-            
-            onFocus={() => {
-                setState({ isFocused: !state.isFocused });
-                console.log("focussed");
-            }}
-            onBlur={() => {
-                setState({ isFocused: !state.isFocused });
-            }}
             onPressIn={() => {
                 console.log("onpressin");
                 setState({ isFocused: !state.isFocused });

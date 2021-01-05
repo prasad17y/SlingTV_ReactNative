@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { requireNativeComponent, ViewPropTypes } from "react-native";
 var viewProps = {
-  name: "ExoPlayerView",
+  name: "NewExoPlayerView",
   propTypes: {
     url: PropTypes.string,
     status: PropTypes.string,
     ...ViewPropTypes,
   }
 }
-module.exports = requireNativeComponent("ExoPlayerView", viewProps);
+module.exports = requireNativeComponent("NewExoPlayerView", viewProps);
